@@ -145,7 +145,7 @@ void FrcnnProposalTargetLayer<Dtype>::_sample_rois(const vector<Point4f<Dtype> >
   std::vector<int> _labels(all_rois.size());
   for (int i = 0; i < all_rois.size(); ++ i) {
     for (int j = 0; j < gt_boxes.size(); ++ j) {
-      if (max_overlaps[i] <= overlaps[i][j]) {
+      if (max_overlaps[i] < overlaps[i][j]) {
         max_overlaps[i] = overlaps[i][j];
         gt_assignment[i] = j;       
       }
